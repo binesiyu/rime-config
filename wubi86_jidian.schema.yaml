@@ -80,7 +80,8 @@ reverse_lookup:
     - xform/([jqxy])v/$1u/
 
 punctuator:
-  import_preset: default
+  # import_preset: default
+  import_preset: alternative
 
 key_binder:
   import_preset: default
