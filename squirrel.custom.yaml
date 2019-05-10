@@ -57,7 +57,7 @@ patch:
       ascii_mode: true
     com.microsoft.VSCode:
       ascii_mode: true
-    "com.runningwithcrayons.Alfred-2":
+    "com.runningwithcrayons.Alfred-3":
       ascii_mode: true
     com.sublimetext.2:
       ascii_mode: true
@@ -67,5 +67,8 @@ patch:
       ascii_mode: true
       no_inline: true
     org.vim.MacVim:
+      ascii_mode: true
+      no_inline: true
+    com.qvacua.VimR:
       ascii_mode: true
       no_inline: true
