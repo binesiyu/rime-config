@@ -73,4 +73,4 @@ patch:
       no_inline: true
     com.qvacua.VimR:
       ascii_mode: true
-      no_inline: true
+      # no_inline: true
