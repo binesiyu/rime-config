@@ -1,6 +1,8 @@
 !.gitattributes
 !.gitignore
 .git/*
+wubi86.userdb
 build/*
+sync/
 installation.yaml
 user.yaml
