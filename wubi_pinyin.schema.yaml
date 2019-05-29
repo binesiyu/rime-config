@@ -165,7 +165,7 @@ switches:
     reset: 1
     states: ["🈚️️︎", "🈶️️️"]
 translator:
-  dictionary: wubi86
+  dictionary: wubi86.extended
   disable_user_dict_for_patterns:
     - "^z.*$"
   enable_charset_filter: true
