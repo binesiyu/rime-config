@@ -8,9 +8,7 @@
 
 patch:
   schema_list:
-    # - schema: wubi_pinyin
-    - schema: wubi86_jidian
-      #- schema: luna_pinyin_simp
+    - schema: wubi_pinyin           # 五笔拼音混合輸入
 
   # Menu
   menu:

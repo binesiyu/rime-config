@@ -1,31 +1,23 @@
-# Rime schema settings
-# encoding: utf-8
-
-schema:
-  schema_id: wubi_pinyin
-  name: "五笔·拼音"
-  version: "0.9"
-  author:
-    - 發明人 王永民先生
-  description: |
-    五筆字型86版＋漢語拼音混合輸入。
-    碼表源自 ibus-table
-    敲 z 鍵進入拼音反查
-  dependencies:
-    - pinyin_simp
-
-switches:
-  - name: ascii_mode
-    reset: 0
-    states: [ 中文, 西文 ]
-  - name: full_shape
-    states: [ 半角, 全角 ]
-  - name: extended_charset
-    states: [ 常用, 增廣 ]
-  - name: ascii_punct
-    states: [ 。，, ．， ]
-
+abc_segmentor:
+  extra_tags:
+    - reverse_lookup
+custom_phrase:
+  db_class: stabledb
+  dictionary: ""
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: 1
+  user_dict: custom_phrase
+customization: 3040473729
+emoji_conversion:
+  opencc_config: emoji.json
+  option_name: show_emoji
+  tags: abc
 engine:
+  filters:
+    - simplifier
+    - uniquifier
+    - "simplifier@emoji_conversion"
   processors:
     - ascii_composer
     - recognizer
@@ -45,43 +37,140 @@ engine:
     - punct_translator
     - reverse_lookup_translator
     - table_translator
-
-speller:
-  delimiter: " ;'"
-  #max_code_length: 4  # 四碼頂字上屏
-
-translator:
-  dictionary: wubi86
-  prism: wubi_pinyin
-  enable_charset_filter: true
-  enable_sentence: true
-  enable_encoder: true
-  encode_commit_history: true
-  max_phrase_length: 4
-  disable_user_dict_for_patterns:
-    - "^z.*$"
-
-abc_segmentor:
-  extra_tags:
-    - reverse_lookup
-
-reverse_lookup:
-  dictionary: pinyin_simp
-  prefix: "z"
-  suffix: "'"
-  tips: 〔拼音〕
-  preedit_format:
-    - xform/([nl])v/$1ü/
-    - xform/([nl])ue/$1üe/
-    - xform/([jqxy])v/$1u/
-
-punctuator:
-  import_preset: default
-
+    - "table_translator@custom_phrase"
 key_binder:
   import_preset: default
-
+punctuator:
+  import_preset: symbols
+  full_shape:
+      " " : { commit: "　" }
+      "," : { commit: ， }
+      "." : { commit: 。 }
+      "<" : [ 《, 〈, «, ‹ ]
+      ">" : [ 》, 〉, », › ]
+      "/" : [ 、, ／, "/", ÷ ]
+      "?" : { commit: ？ }
+      ";" : { commit: ； }
+      ":" : ：
+      "'" : { pair: [ "‘", "’" ] }
+      "\"" : { pair: [ "“", "”" ] }
+      "\\" : [ 、, ＼, "\\" ]
+      "|" : [ ・, ｜, "|", "§", "¦" ]
+      "`" : [ ｀, "`" ]
+      "~" : [ 〜, "~", ～, 〰 ]
+      "!" : { commit: ！ }
+      "@" : [ ＠, "@", ☯ ]
+      "#" : [ ＃, "#", ⌘ ]
+      "%" : [ ％, "%", "°", "℃" ]
+      "$" : [ ￥, "$", "€", "£", "¥", "¢", "¤" ]
+      "^" : { commit: …… }
+      "&" : [ ＆, "&" ]
+      "*" : [ ＊, "*", ・, ×, ※, ❂, · ]
+      "(" : （
+      ")" : ）
+      "-" : [ －, "-" ]
+      "_" : ——
+      "+" : [ ＋, "+" ]
+      "=" : [ ＝, "=" ]
+      "[" : [ 「, 【, 〔, ［ ]
+      "]" : [ 」, 】, 〕, ］ ]
+      "{" : [ 『, 〖, ｛ ]
+      "}" : [ 』, 〗, ｝ ]
+  half_shape:
+      "," : { commit: "," }
+      "." : { commit: "." }
+      "<" : "<"
+      ">" : ">"
+      "/" : "/"
+      "?" : { commit: "?" }
+      ";" : { commit: ";" }
+      ":" : { commit: ":" }
+      "'" : "'"
+      "\"" : "\""
+      "\\" : "\\"
+      "|" : "|"
+      "`" : "`"
+      "~" : "~"
+      "!" : { commit: "!" }
+      "@" : "@"
+      "#" : "#"
+      "%" : "%"
+      "$" : "$"
+      "^" : "^"
+      "&" : "&"
+      "*" : "*"
+      "(" : "("
+      ")" : ")"
+      "-" : "-"
+      "_" : "_"
+      "+" : "+"
+      "=" : "="
+      "[" : "["
+      "]" : "]"
+      "{" : "{"
+      "}" : "}"
+  symbols:
+    "/bq": ["😂️", "😅️", "☺️", "😱️", "😭️", "😇️", "🙃️", "🤔️", "💊️", "💯️", "👍️", "🙈️", "💩️", "😈️"]
+    "/dn": ["⌘", "⌥", "⇧", "⌃", "⎋", "⇪", "", "⌫", "⌦", "↩︎", "⏎", "↑", "↓", "←", "→", "↖", "↘", "⇟", "⇞"]
+    "/fh": ["©", "®", "℗", "℠", "™", "℡", "ⓘ", "♂", "♀", "☉", "☊", "☋", "☌", "☍", "☐", "☑︎", "☒", "☜", "☝", "☞", "☟", "✎", "✄", "♲", "♻", "⚐", "⚑", "⚠"]
+    "/fs": ["½", "‰", "¼", "⅓", "⅔", "¾", "⅒"]
+    "/xh": ["＊", "×", "✱", "★", "☆", "✩", "✧", "❋", "❊", "❉", "❈", "❅", "✿", "✲"]
 recognizer:
   import_preset: default
   patterns:
-    reverse_lookup: "^z[a-z]*'?$"
+    punct: "^/([a-z]+|[0-9]0?)$"
+    reverse_lookup: "`[a-z]*'?$"
+reverse_lookup:
+  comment_format:
+    - "xform/^(\\w+).*/$1/"
+  dictionary: pinyin_simp
+  preedit_format:
+    - "xform/([nl])v/$1ü/"
+    - "xform/([nl])ue/$1üe/"
+    - "xform/([jqxy])v/$1u/"
+  prefix: "`"
+  suffix: "'"
+  tips: "〔拼音〕"
+schema:
+  author:
+    - "發明人 王永民先生"
+  dependencies:
+    - pinyin_simp
+  description: |
+    五筆字型86版＋漢語拼音混合輸入。
+    碼表源自 ibus-table
+    
+  name: "五笔·拼音"
+  schema_id: wubi_pinyin
+  version: 0.9.custom.3040473729
+simplifier:
+  opencc_config: simp2trad.json
+speller:
+  auto_select: true
+  auto_select_unique_candidate: true
+  delimiter: " ;'"
+  max_code_length: 4
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: ["中文", "西文"]
+  - name: full_shape
+    states: ["半角", "全角"]
+  - name: simplification
+    reset: 0
+    states: ["汉字", "漢字"]
+  - name: ascii_punct
+    states: ["。，", "．，"]
+  - name: show_emoji
+    reset: 1
+    states: ["🈚️️︎", "🈶️️️"]
+translator:
+  dictionary: wubi86
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+  enable_charset_filter: true
+  enable_encoder: true
+  enable_sentence: true
+  encode_commit_history: true
+  max_phrase_length: 4
+  prism: wubi_pinyin

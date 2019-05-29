@@ -1,76 +1,136 @@
 patch:
+  show_notifications_when: appropriate          # 状态通知，适当，也可设为全开（always）全关（never）
+  style/color_scheme: sys_dark                 # 启用配色方案
+  preset_color_schemes:
+    system_blue:
+      author: "scomper <scomper@gmail.com>"     # 作者信息
+      back_color: 0xFFFFFF                      # 候选条背景色，24位色值，16进制，BGR顺序
+      border_color: 0xE0B693                    # 边框色
+      candidate_text_color: 0x000000            # 预选项文字颜色
+      comment_text_color: 0x999999              # 拼音等提示文字颜色
+      hilited_back_color: 0xfff0e3              # 第一候选项背景背景色
+      hilited_candidate_text_color: 0x000000    # 第一候选项文字颜色
+      hilited_candidate_label_color: 0x999999   # 第一候选项编号颜色
+      hilited_comment_text_color: 0x999999      # 注解文字高亮
+      hilited_text_color: 0x999999              # 高亮拼音 (需要开启内嵌编码)
+      name: "系统蓝／System Blue"
+      text_color: 0x424242                      # 拼音行文字颜色
+      label_color: 0x999999                     # 预选栏编号颜色
+      horizontal: true                          # 水平排列
+      inline_preedit: true                      # 单行显示，false双行显示
+      candidate_format: "%c\u2005%@\u2005"      # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间。
+      font_point: 16                            # 候选文字大小
+      label_font_point: 14                      # 候选编号大小
+      label_font_face: "SFCompactText-Regular"  # 候选词编号字体  
+      corner_radius: 5                          # 候选条圆角
+      hilited_corner_radius: 3                  # 高亮圆角
+      border_height: 6                          # 窗口边界高度，大于圆角半径才生效
+      border_width: 6                           # 窗口边界宽度，大于圆角半径才生效
+      border_color_width: 0 
+    dark: 
+      name: "系统黑1"
+      author: "kun.peng@outlook.my<http://imhow.org>"
+      text_color: 0xFFFFFF
+      back_color: 0x2E2E2E
+      candidate_text_color: 0xd8e3e6
+      hilited_text_color: 0xffcf9a
+      hilited_back_color: 0x222222
+      comment_text_color: 0x606cff
+      inline_preedit: true                      #单行显示，false双行显示
+      horizontal: true                          # 水平排列
+      candidate_format: "%c\u2005%@"            # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间。
+      corner_radius: 5                          #候选条圆角
+      border_height: 1 
+      border_width: 1
+      border_color: 0xF1F0E
+      font_face: "PingFangSC"                   #候选词字体
+      font_point: 16                            #候选字词大小
+      label_font_face: "SFCompactText-Regular"  # 候选词编号字体
+      label_font_point: 13                      #候选编号大小
+      hilited_text_color: 0x8BB66C              #编码前景色
+      hilited_back_color: 0x0000FF              #编码背景色
+      hilited_candidate_text_color: 0xFFFFFF    #候选文字颜色
+      hilited_candidate_back_color: 0xE16300    #候选文字背景色
+      hilited_comment_text_color: 0x2D41F7      # 注解文字高亮
+      hilited_text_color: 0x000099              # 高亮拼音 (需要开启内嵌编码)
+      hilited_corner_radius: 0                  # 高亮圆角
+      comment_text_color: 0x2D64F9              #拼音等提示文字颜色
+      style/spacing: 5                          # 在非内嵌编码模式下，预编辑和候选词之间的间距
+      label_color: 0x7D7C7B                     #预选栏编号颜色
+      alpha: 0.98
+    sys_dark: 
+      name: "系统黑2"
+      author: "kun.peng@outlook.my<http://imhow.org>"
+      text_color: 0xFFFFFF
+      back_color: 0x2E2E2E
+      candidate_text_color: 0xd8e3e6
+      hilited_text_color: 0xffcf9a
+      hilited_back_color: 0x222222
+      comment_text_color: 0x606cff
+      inline_preedit: true                      # 单行显示，false双行显示
+      horizontal: true                          # 水平排列
+      candidate_format: "%c\u2005%@"            # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间。
+      corner_radius: 3                          # 候选条圆角
+      border_height: 3
+      border_width: 3
+      border_color: 0xF1F0E
+      font_face: "PingFangSC"                   # 候选词字体
+      font_point:  18                           # 候选字词大小
+      label_font_face: "SFCompactText-Regular"  # 候选词编号字体
+      label_font_point: 13                      # 候选编号大小
+      hilited_text_color: 0x3BB66C              # 编码前景色
+      hilited_back_color: 0x0000FF              # 编码背景色
+      hilited_candidate_text_color: 0xFFFFFF    # 候选文字颜色
+      hilited_candidate_back_color: 0xE16300    # 候选文字背景色
+      hilited_comment_text_color: 0x2D41F7      # 注解文字高亮
+      hilited_text_color: 0x000099              # 高亮拼音 (需要开启内嵌编码)
+      hilited_corner_radius: 3                  # 高亮圆角
+      comment_text_color: 0x2D64F9              # 拼音等提示文字颜色
+      style/spacing: 5                          # 在非内嵌编码模式下，预编辑和候选词之间的间距
+      label_color: 0x7D7C7B                     # 预选栏编号颜色
+      alpha: 0.98
 
-  # ------  候选框样式  --------
-  "style/color_scheme": clean_white    # 這項用於選中下面定義的新方案
-  "preset_color_schemes/clean_white":  # 在配色方案列表裏加入標識爲 starcraft 的新方案
-    border_height: 0
-    border_width: 0
-    color_scheme: clean_white
-    font_point: 24
-    corner_radius: 5
-    horizontal: true
-    inline_preedit: true
-    line_spacing: 5
-    spacing: 10
-    back_color: 0xeeeeee
-    # candidate_format: "%c\u2005%@\u2005"  # 编号 %c 和候选词 %@ 前后的空间
-    # candidate_format: "%c %@ "
-    candidate_text_color: 0x000000
-    comment_text_color: 0x808080
-    hilited_candidate_back_color: 0xeeeeee
-    hilited_candidate_label_color: 0xa0c98915
-    hilited_candidate_text_color: 0xc98915
-    hilited_text_color: 0x000000
-    label_color: 0x888888
-    label_font_point: 20
-    name: "简约白／Clean White"
-    text_color: 0x808080
-
-  # --- 特定程序定义初始状态的英文输入 ---
+  # 设置APP中英文默认
   app_options:
-    # Add
-#    com.apple.launchpad.launcher: # 启动面板，目前不起作用
-#        ascii_mode: true
-    com.hegenberg.BetterTouchTool:
-      ascii_mode: true
-    com.jetbrains.PhpStorm:
-      ascii_mode: true
-    # original
-    co.zeit.hyper:
-      ascii_mode: true
-    com.alfredapp.Alfred:
-      ascii_mode: true
+  # 默认中文
+    com.apple.finder:
+        ascii_mode: true
+        no_inline: false
+    com.binarynights.ForkLift-3:
+        ascii_mode: true
+        no_inline: false
+    io.alacritty:
+        ascii_mode: true
+        no_inline: false
     com.apple.Spotlight:
-      ascii_mode: true
-    com.apple.Terminal:
-      ascii_mode: true
-      no_inline: true
-    com.apple.dt.Xcode:
-      ascii_mode: true
-    com.barebones.textwrangler:
-      ascii_mode: true
-    com.blacktree.Quicksilver:
-      ascii_mode: true
-    com.github.atom:
-      ascii_mode: true
-    com.googlecode.iterm2:
-      ascii_mode: true
+        ascii_mode: true
+        no_inline: false
+    com.runningwithcrayons.Alfred-3:
+        ascii_mode: true
+    com.tinyapp.TablePlus:
+        ascii_mode: true
+    org.eclipse.platform.ide:
+        ascii_mode: true
     com.macromates.TextMate.preview:
-      ascii_mode: true
+        ascii_mode: true
     com.microsoft.VSCode:
-      ascii_mode: true
-    "com.runningwithcrayons.Alfred-3":
-      ascii_mode: true
-    com.sublimetext.2:
-      ascii_mode: true
-    org.gnu.Aquamacs:
-      ascii_mode: true
-    org.gnu.Emacs:
-      ascii_mode: true
-      no_inline: true
+        ascii_mode: true
     org.vim.MacVim:
-      ascii_mode: true
-      no_inline: true
+        ascii_mode: true
+        no_inline: false
+    com.apple.dt.Xcode:
+        ascii_mode: true
+    com.googlecode.iterm2:
+        ascii_mode: true
+    com.vandyke.SecureCRT:
+        ascii_mode: true
     com.qvacua.VimR:
       ascii_mode: true
       # no_inline: true
+    # 默认中文
+    com.tencent.qq:
+        {}
+    ccom.tencent.xinWeChat:
+        {}
+    com.google.Chrome:
+        no_inline: false
