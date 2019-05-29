@@ -48,7 +48,7 @@ punctuator:
       "." : { commit: 。 }
       "<" : [ 《, 〈, «, ‹ ]
       ">" : [ 》, 〉, », › ]
-      "/" : [ 、, ／, "/", ÷ ]
+      '/' : [ ／, ÷ ]
       "?" : { commit: ？ }
       ";" : { commit: ； }
       ":" : ：
@@ -81,7 +81,7 @@ punctuator:
       "." : { commit: "." }
       "<" : "<"
       ">" : ">"
-      "/" : "/"
+      "/" : [ 、, ／, "/", ÷ ]
       "?" : { commit: "?" }
       ";" : { commit: ";" }
       ":" : { commit: ":" }
@@ -174,3 +174,4 @@ translator:
   encode_commit_history: true
   max_phrase_length: 4
   prism: wubi_pinyin
+  db_class: stabledb # userdb - 二进制 / tabledb - 人类语言
