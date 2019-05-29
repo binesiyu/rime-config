@@ -35,7 +35,7 @@ patch:
   "speller/auto_select": true #顶字上屏
   "speller/auto_select_unique_candidate": true #无重码自动上屏
   
-  "translator/dictionary": wubi86 #加载五笔词库
+  "translator/dictionary": wubi86.extended #加载五笔词库
   "reverse_lookup/comment_format/@1": xform/^(\w+).*/$1/
 
 # 使用自定义词典 custom_phrase.txt
