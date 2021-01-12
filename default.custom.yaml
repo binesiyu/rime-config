@@ -28,6 +28,38 @@ patch:
       - {accept: apostrophe, send: 3, when: has_menu} #候选3 用单引号
       - {accept: bracketleft, send: Page_Up, when: paging}
       - {accept: bracketright, send: Page_Down, when: has_menu}
+     # - { when: composing, accept: Tab, send: Page_Up } # Tab 翻页
+      - { when: composing, accept: Tab, send: Right } # Tab 移动光标向右
+      - { when: composing, accept: Shift+Tab, send: Page_Up }
+      - { when: paging, accept: minus, send: Page_Up }
+      - { when: has_menu, accept: equal, send: Page_Down }
+      - {accept: "Control+p", send: Up, when: composing}
+      - {accept: "Control+n", send: Down, when: composing}
+      - {accept: "Control+b", send: Left, when: composing}
+      - {accept: "Control+f", send: Right, when: composing}
+      - {accept: "Control+a", send: Home, when: composing}
+      - {accept: "Control+e", send: End, when: composing}
+      - {accept: "Control+d", send: Delete, when: composing}
+      - {accept: "Control+k", send: "Shift+Delete", when: composing}
+      - {accept: "Control+h", send: BackSpace, when: composing}
+      - {accept: "Control+g", send: Escape, when: composing}
+      - {accept: "Control+bracketleft", send: Escape, when: composing}
+      # - { when: has_menu, accept: semicolon, send: 2 }
+      # - { when: has_menu, accept: apostrophe, send: 3 }
+      # - {accept: comma, send: Page_Up, when: paging}
+      # - {accept: period, send: Page_Down, when: has_menu}
+      # - {accept: "Control+Shift+1", select: .next, when: always}
+      # - {accept: "Control+Shift+2", toggle: ascii_mode, when: always}
+      # - {accept: "Control+Shift+3", toggle: full_shape, when: always}
+      # - {accept: "Control+Shift+4", toggle: simplification, when: always}
+      # - {accept: "Control+Shift+5", toggle: extended_charset, when: always}
+      # - {accept: "Control+Shift+exclam", select: .next, when: always}
+      # - {accept: "Control+Shift+at", toggle: ascii_mode, when: always}
+      # - {accept: "Control+Shift+numbersign", toggle: full_shape, when: always}
+      # - {accept: "Control+Shift+dollar", toggle: simplification, when: always}
+      # - {accept: "Control+Shift+percent", toggle: extended_charset, when: always}
+      # - {accept: "Shift+space", toggle: full_shape, when: always}
+      # - {accept: "Control+period", toggle: ascii_punct, when: always}
 
   punctuator:
     full_shape:
