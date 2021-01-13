@@ -3,11 +3,6 @@
 #@/db_name  custom_phrase.txt
 #@/db_type	tabledb
 
-kun.peng@outlook.my	mmail
-kun.peng.chn@gmail.com	gmail
-kun.peng@outlook.sg	gmail
-kun.peng@outlook.ie	email
-kun.peng@yahoo.com	ymail
 google.com	google
 imhow.org	imhow
 google.com	www
